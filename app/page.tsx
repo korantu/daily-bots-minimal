@@ -5,6 +5,7 @@ import { DailyVoiceClient } from "realtime-ai-daily";
 import { VoiceClientAudio, VoiceClientProvider } from "realtime-ai-react";
 
 import App from "./App";
+import { botConfig } from "@/config/botConfig";
 
 export default function Home() {
   const [dailyVoiceClient, setDailyVoiceClient] =
@@ -15,41 +16,7 @@ export default function Home() {
       return;
     }
 
-    const voiceClient = new DailyVoiceClient({
-      baseUrl: "/api",
-      services: {
-        llm: "together",
-        tts: "cartesia",
-      },
-      config: [
-        {
-          service: "tts",
-          options: [
-            { name: "voice", value: "79a125e8-cd45-4c13-8a67-188112f4dd22" },
-          ],
-        },
-        {
-          service: "llm",
-          options: [
-            {
-              name: "model",
-              value: "meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo",
-            },
-            {
-              name: "initial_messages",
-              value: [
-                {
-                  role: "system",
-                  content:
-                    "You are a assistant called ExampleBot. You can ask me anything. Keep responses brief and legible.",
-                },
-              ],
-            },
-            { name: "run_on_config", value: true },
-          ],
-        },
-      ],
-    });
+    const voiceClient = new DailyVoiceClient(botConfig);
 
     setDailyVoiceClient(voiceClient);
   }, [dailyVoiceClient]);
