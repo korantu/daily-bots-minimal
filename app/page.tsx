@@ -42,7 +42,7 @@ export default function Home() {
       <>
         <main className="flex min-h-screen flex-col items-center justify-between p-24">
           <div className="flex flex-col gap-4 items-center">
-            <h1 className="text-4xl font-bold">PSBU Experience Center</h1>
+            <h1 className="text-4xl font-bold">Welcome to PSBU Experience Center</h1>
             <p className="text-xl text-center mb-4">Your personalized digital concierge is here to assist you. You can ask me any question.</p>
             <App />
           </div>
