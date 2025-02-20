@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { TransportState, VoiceError, VoiceEvent } from "realtime-ai";
 import { useVoiceClient, useVoiceClientEvent } from "realtime-ai-react";
+import Particles from "./Particles";
+import Welcome from "./Welcome";
 
 const App: React.FC = () => {
   const voiceClient = useVoiceClient();
@@ -38,8 +40,8 @@ const App: React.FC = () => {
     setBotTranscript([]);
   }
 
-  return (
-    <div className="flex flex-col gap-4">
+  var backup = 
+    (<div className="flex flex-col gap-4">
       <div className="text-red-500 text-bold">{error}</div>
 
       <button
@@ -60,6 +62,22 @@ const App: React.FC = () => {
       </div>
     </div>
   );
+
+  return (
+    <div
+      style={{
+        width: '100vw',
+        height: '100vh',
+        position: 'relative',
+        overflow: 'hidden'
+      }}
+    >
+      <div className="app">
+        <Particles />
+        <Welcome start={start} state={state} />
+      </div>
+    </div>
+  )
 };
 
 export default App;
